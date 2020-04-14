@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+brew install terraform ;
+  cd ../infrastructure &&
+  terraform init

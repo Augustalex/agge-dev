@@ -1,0 +1,2 @@
+#!/bin/bash
+terraform apply -state="./do_not_commit/terraform.tfstate" "./do_not_commit/plan"

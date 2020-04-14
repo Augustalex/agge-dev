@@ -1,0 +1,4 @@
+do_not_commit
+node_modules
+.idea
+.terraform

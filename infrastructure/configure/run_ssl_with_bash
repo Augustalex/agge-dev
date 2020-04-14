@@ -1,0 +1,3 @@
+#!/bin/sh
+. /configure/milestone_2
+bash /configure/ssl
