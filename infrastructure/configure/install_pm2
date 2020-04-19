@@ -1,0 +1,2 @@
+#!/bin/bash
+~/.nvm/versions/node/v12.16.2/bin/npm install pm2 -g

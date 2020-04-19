@@ -1,0 +1,5 @@
+#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+  sudo $(realpath "$0")
+  exit
+fi

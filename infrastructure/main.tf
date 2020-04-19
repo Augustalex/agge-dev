@@ -1,10 +1,11 @@
 locals {
   latest_stable_ubuntu_image = "ubuntu-18-04-x64"
+  latest_stable_caddy_image = "caddy-18-04"
   cheapest_droplet_size = "s-1vcpu-1gb"
 }
 
 resource "digitalocean_droplet" "main" {
-  image = local.latest_stable_ubuntu_image
+  image = local.latest_stable_caddy_image
   size = local.cheapest_droplet_size
   name = "main"
   region = "nyc3"
@@ -33,7 +34,7 @@ resource "digitalocean_droplet" "main" {
 
   provisioner "remote-exec" {
     inline = [
-      ". /configure/all"
+      ". /configure/shell_entry"
     ]
   }
 }

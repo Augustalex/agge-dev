@@ -1,2 +1,11 @@
 #!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+  sudo $(realpath "$0")
+  exit
+fi
+sudo bash /configure/caddy_site &&
+sudo bash /configure/install_nvm &&
+sudo bash /configure/install_node &&
+sudo bash /configure/install_pm2 &&
+sudo bash /configure/test_server &&
 echo "Done"
