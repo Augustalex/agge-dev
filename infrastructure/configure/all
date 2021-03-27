@@ -5,7 +5,6 @@ if [[ $EUID -ne 0 ]]; then
 fi
 sleep 2m &&
 sudo bash /configure/caddy_only_reverse_proxy &&
-  sudo bash /configure/install_docker_simple &&
   sudo bash /configure/install_git &&
   sudo bash /configure/checkout_aggedev &&
   sudo bash /configure/start_server &&
