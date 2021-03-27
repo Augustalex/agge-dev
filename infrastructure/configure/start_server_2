@@ -1,0 +1,2 @@
+#!/bin/bash
+cd /var/agge-dev/test && npm install && pm2 start test-server.js
