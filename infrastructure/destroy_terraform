@@ -1,2 +1,2 @@
 #!/bin/bash
-terraform destroy -state=./do_not_commit/terraform.tfstate -var-file=./do_not_commit/terraform.tfvars
+terraform destroy -state=./do_not_commit/terraform.tfstate -var-file=./terraform.tfvars

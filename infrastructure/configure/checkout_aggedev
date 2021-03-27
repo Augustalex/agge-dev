@@ -1,0 +1,2 @@
+#!/bin/bash
+cd /var && git clone https://github.com/Augustalex/agge-dev.git

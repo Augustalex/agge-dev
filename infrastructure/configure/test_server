@@ -1,6 +1,0 @@
-#!/bin/bash
-cd /var/www/
-mkdir test_server
-cd test_server
-cp /configure/test_server.js ./test_server.js
-~/.nvm/versions/node/v12.16.2/bin/pm2 start test_server.js

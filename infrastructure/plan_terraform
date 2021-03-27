@@ -1,2 +1,2 @@
 #!/bin/bash
-terraform plan -state=./do_not_commit/terraform.tfstate -var-file=./terraform.tfvars -out=./do_not_commit/p
+terraform plan -state=./do_not_commit/terraform.tfstate -var-file=./terraform.tfvars -out=./do_not_commit/plan
