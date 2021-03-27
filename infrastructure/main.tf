@@ -32,11 +32,11 @@ resource "digitalocean_droplet" "main" {
     destination = "/"
   }
 
-  provisioner "remote-exec" {
-    inline = [
-      ". /configure/shell_entry"
-    ]
-  }
+//  provisioner "remote-exec" {
+//    inline = [
+//      ". /configure/shell_entry"
+//    ]
+//  }
 }
 
 resource "digitalocean_domain" "agge" {
