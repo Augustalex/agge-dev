@@ -1,9 +1,0 @@
-#!/bin/bash
-sudo bash /configure/setup_caddy_using_api &&
-  sudo bash /configure/install_git &&
-  sudo bash /configure/install_nvm &&
-  sudo bash /configure/setup_nvm &&
-  sudo bash /configure/install_pm2 &&
-  sudo bash /configure/checkout_aggedev &&
-  sudo bash /configure/start_server_2 &&
-  echo "Done"

@@ -1,7 +1,0 @@
-version: '2.0'
-services:
-  site:
-    container_name: test
-    build: .
-    ports:
-      - "8080:8080"

@@ -1,4 +1,0 @@
-#!/bin/bash
-find /etc/caddy -name "Caddyfile" -exec sed -i "0,/:80/ s/:80/agge.dev/" {} +
-find /etc/caddy -name "Caddyfile" -exec sed -i "0,/\/usr\/share\/caddy/ s/\/usr\/share\/caddy/\/var\/www\/html/" {} +
-find /etc/caddy -name "Caddyfile" -exec sed -i "0,/# reverse_proxy/ s/# reverse_proxy/reverse_proxy/" {} +
