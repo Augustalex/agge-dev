@@ -9,3 +9,6 @@
 1. Install nginx and setup the site. You can follow the middle part of this tutorial: https://www.youtube.com/watch?v=oykl1Ih9pMg&ab_channel=TraversyMedia
 1. Setup certbot with auto renawal and nginx config. Follow this guide: https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx
 1. Run the server using pm2 and you are good to go!
+
+- Note that domain setup and droplet settings are completely managed by Terraform.
+- Note that you have to have the appropriate secrets setup on your machine to run Terraform. Check the .tf script files to see where it expects secrets to be stored and what secrets you need. Examples of secrets you need are: Digital Ocean API Token, Digital Ocean SSH keys
