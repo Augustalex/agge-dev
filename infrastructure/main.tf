@@ -5,7 +5,7 @@ locals {
 }
 
 resource "digitalocean_droplet" "main" {
-  image = local.latest_stable_caddy_image
+  image = local.latest_stable_ubuntu_image
   size = local.cheapest_droplet_size
   name = "main"
   region = "nyc3"
