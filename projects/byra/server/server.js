@@ -10,6 +10,14 @@ const publicPath = path.join(__dirname, "..", "build");
 app.use(Express.static(publicPath));
 app.use(Express.urlencoded({ extended: false }));
 app.use(Express.json());
+//CATCH ALL ERRORS NAD LOG WHAT IS GOING ON!
+
+app.use(function (err, req, res, next) {
+  if (err) {
+    console.error(err.stack);
+    res.status(500).send("Something broke!");
+  }
+});
 
 app.listen("8081", () => {
   console.log("Trying to restore data...");
