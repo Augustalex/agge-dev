@@ -5,6 +5,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import Box from "./Box";
 
 const LocalStorageKey = "box-data";
+const appUri = (uri) => "/byra" + uri;
 
 function App() {
   const [data, setData] = useState(
@@ -14,7 +15,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("/data");
+      const response = await fetch(appUri("/data"));
       const newData = await response.json();
       setData(newData);
 
@@ -80,7 +81,7 @@ function App() {
     const textData = JSON.stringify(newData);
     localStorage.setItem(LocalStorageKey, textData);
 
-    fetch("/data", {
+    fetch(appUri("/data"), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

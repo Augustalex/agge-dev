@@ -2,22 +2,18 @@ const Express = require("express");
 const path = require("path");
 const fs = require("fs").promises;
 
+const publicPath = path.join(__dirname, "..", "build");
+const baseUri = "/byra";
+
+const appUri = (uri) => baseUri + uri;
+
 let data = setupInitialData();
 
 const app = Express();
 
-const publicPath = path.join(__dirname, "..", "build");
-app.use(Express.static(publicPath));
+app.use(baseUri, Express.static(publicPath));
 app.use(Express.urlencoded({ extended: false }));
 app.use(Express.json());
-//CATCH ALL ERRORS NAD LOG WHAT IS GOING ON!
-
-app.use(function (err, req, res, next) {
-  if (err) {
-    console.error(err.stack);
-    res.status(500).send("Something broke!");
-  }
-});
 
 app.listen("8081", () => {
   console.log("Trying to restore data...");
@@ -27,7 +23,7 @@ app.listen("8081", () => {
   console.log("Listening on port 8080.");
 });
 
-app.post("/data", (req, res) => {
+app.post(appUri("/data"), (req, res) => {
   const newData = req.body.data;
   data = newData;
 
@@ -36,11 +32,11 @@ app.post("/data", (req, res) => {
   dumpData();
 });
 
-app.get("/data", (req, res) => {
+app.get(appUri("/data"), (req, res) => {
   res.json(data);
 });
 
-app.post("/data/add-labels", (req, res) => {
+app.post(appUri("/data/add-labels"), (req, res) => {
   const newItem = {
     index: parseInt(req.body.boxNumber, 10),
     labels: req.body.labels.split(",").map((word) => word.trim()),
@@ -70,7 +66,7 @@ app.post("/data/add-labels", (req, res) => {
   dumpData();
 });
 
-app.post("/data/remove-labels", (req, res) => {
+app.post(appUri("/data/remove-labels"), (req, res) => {
   const newItem = {
     index: parseInt(req.body.boxNumber, 10),
     labels: req.body.labels.split(",").map((word) => word.trim()),
@@ -97,7 +93,7 @@ app.post("/data/remove-labels", (req, res) => {
   dumpData();
 });
 
-app.post("/data/change-title", (req, res) => {
+app.post(appUri("/data/change-title"), (req, res) => {
   const newItem = {
     index: parseInt(req.body.boxNumber, 10),
     title: req.body.title,
@@ -125,14 +121,14 @@ app.post("/data/change-title", (req, res) => {
   dumpData();
 });
 
-app.get("/search", (req, res) => {
+app.get(appUri("/search"), (req, res) => {
   const searchTerm = req.query.term;
 
   const text = search(searchTerm);
   res.end(text);
 });
 
-app.get("/advice", (req, res) => {
+app.get(appUri("/advice"), (req, res) => {
   const searchTerm = req.query.term;
 
   const text = advice(searchTerm);
@@ -264,7 +260,7 @@ function countLabelOccurrence(box, term) {
   );
 }
 
-app.get("/open", (req, res) => {
+app.get(appUri("/open"), (req, res) => {
   const boxNumber = parseInt(req.query.boxNumber, 10);
 
   const box = data.find((b) => b.index === boxNumber);
